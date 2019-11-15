@@ -1,0 +1,22 @@
+.boss-text-enter{
+	opacity: 0;
+}
+.boss-text-enter-active{
+	opacity:1;
+	transition: opacity 1000ms;
+}
+.boss-text-enter-done{
+	opacity:1; 
+}
+.boss-text-exit{ 
+	opacity:1;
+	
+}
+.boss-text-exit-ative{
+	opacity:0;   
+	transition:opacity 1000ms; 
+} 
+.boss-text-exit-done{   
+	opacity:0; 
+	
+} 

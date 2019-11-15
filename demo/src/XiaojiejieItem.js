@@ -16,7 +16,7 @@ class XiaojiejieItem extends Component { //cc
          ); 
     }
 	handleClick(){ 
-		debugger; 
+		//debugger;  
 		this.props.deleteItem(this.props.index);  
 	}  
 }   

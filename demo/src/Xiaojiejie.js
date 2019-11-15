@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import XiaojiejieItem from './XiaojiejieItem';  
+import Transition from './Transition'; 
+import {CSSTransition,TransitionGroup} from 'react-transition-group'; 
+import './style.css'
 class Xiaojiejie extends Component{  
 	//在某一时刻 可以自动执行的函数
 	constructor(props) {
@@ -29,30 +32,39 @@ class Xiaojiejie extends Component{
 			<div>
 			   {/* 正确注释的写法 */}
                <div>
-			   <input 
+			   <input  
 			    value={this.state.inputValue} 
 			    onChange={this.inputChange.bind(this)}
 				ref={(input)=>{this.input=input}}
 			   />  
 			   <button onClick={this.addList.bind(this)}> 增加服务 </button></div>
                <ul ref={(ul)=>{this.ul = ul}}> 
-                   {
-					   this.state.list.map((item,index)=>{
-						   return ( 
-                                <XiaojiejieItem 
-								 key={index+item}  
-								content={item}
-								index={index}
-								deleteItem={this.deleteItem.bind(this)}
-								avname="111" 
-								/>
-						   )//不加（）的话就不可以换行 
-					   })
-				   } 
+			       <TransitionGroup>
+					   {
+						   this.state.list.map((item,index)=>{
+							   return ( 
+							       <CSSTransition
+								     timeout={2000}
+									 classNames="boss-text"
+									 unmountOnExit 
+									  key={index+item}  
+								    >
+									<XiaojiejieItem  
+									content={item}
+									index={index}
+									deleteItem={this.deleteItem.bind(this)}
+									avname="111" 
+									/>
+								   </CSSTransition>
+							   )//不加（）的话就不可以换行 
+						   })
+					   }  
+				   </TransitionGroup>
                </ul>   
+			   <Transition/> 
             </div> 
 		)     
-	}
+	} 
 	inputChange(e){
 		/* console.log(e);  
 		console.log(this); 
